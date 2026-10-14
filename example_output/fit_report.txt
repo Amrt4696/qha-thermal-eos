@@ -1,0 +1,39 @@
+QHA thermal EOS fit
+===================
+
+Input: data/bridgmanite_example.csv
+Reference temperature: 298.0 K
+Formula units per cell: 4
+Atoms per formula unit: 5
+Pressure curves: 6
+PVT points: 202
+
+Stage 1: reference BM3
+----------------------
+V0 [cm3/mol]    = 25.69623062 +/- 0.00680312
+K0 [GPa]        = 218.04915762 +/- 0.79337255
+K0prime         = 4.02096644 +/- 0.01659514
+RMSE = 0.044013 GPa   MAE = 0.037592 GPa   MAX|dP| = 0.076865 GPa
+
+Stage 2: finite-strain Debye thermal parameters
+-----------------------------------------------
+gamma0          = 1.68706698 +/- 0.00686031
+q0              = 1.94210212 +/- 0.02567796
+thetaD0 [K]     = 807.62587162 +/- 21.11463594
+RMSE = 0.206545 GPa   MAE = 0.151591 GPa   MAX|dP| = 0.878592 GPa
+
+Equivalent V0 = 170.67837922 A3/cell
+Training volume RMSE = 0.083693 %
+
+Leave-one-pressure-out validation
+---------------------------------
+held_P  N    RMSE_P    MAE_P   MAX_dP   RMSE_dV%  MAE_dV%  MAX_dV%
+   0.0  18  0.901043 0.725115 1.896210   0.525439  0.402769  1.194465
+  24.0  24  0.299486 0.279559 0.416581   0.112872  0.103069  0.173786
+  50.0  40  0.351292 0.270669 0.758947   0.112548  0.083584  0.260945
+  75.0  40  0.112929 0.104585 0.155353   0.026424  0.024042  0.039482
+ 100.0  40  0.108666 0.095374 0.172692   0.021216  0.018273  0.035014
+ 120.0  40  0.393323 0.298323 0.750184   0.068699  0.051519  0.135205
+
+Mean LOPO volume RMSE = 0.144533 %
+Worst LOPO volume RMSE = 0.525439 %
