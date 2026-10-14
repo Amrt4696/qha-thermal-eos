@@ -6,11 +6,11 @@ state.
 
 The fit is done in two steps:
 
-1. The reference compression curve at \(T_0\) is fitted with a
-   third-order Birch-Murnaghan equation of state to obtain \(V_0\),
-   \(K_{T0}\), and \(K'_{T0}\).
-2. Those parameters are held fixed while \(\gamma_0\), \(q_0\), and
-   \(\theta_{D0}\) are fitted to the full P-T-V dataset using the
+1. The reference compression curve at $T_0$ is fitted with a
+   third-order Birch-Murnaghan equation of state to obtain $V_0$,
+   $K_{T0}$, and $K'_{T0}$.
+2. Those parameters are held fixed while $\gamma_0$, $q_0$, and
+   $\theta_{D0}$ are fitted to the full P-T-V dataset using the
    finite-strain Debye formulation of Stixrude and Lithgow-Bertelloni
    (2005).
 
@@ -91,55 +91,56 @@ Small differences in the last digits can occur across SciPy versions.
 
 The Eulerian finite strain is
 
-\[
+$$
 f=\frac{1}{2}\left[\left(\frac{V_0}{V}\right)^{2/3}-1\right].
-\]
+$$
 
 The 298 K reference pressure is described by third-order Birch-Murnaghan:
 
-\[
+$$
 P_{\mathrm{ref}}=
 3K_0f(1+2f)^{5/2}
 \left[1+\frac{3}{2}(K'_0-4)f\right].
-\]
+$$
 
 For the thermal part,
 
-\[
+$$
 a_1=6\gamma_0,
-\]
-\[
+$$
+
+$$
 a_2=-12\gamma_0+36\gamma_0^2-18\gamma_0q_0,
-\]
-\[
+$$
+
+$$
 \theta(V)=\theta_0
 \left(1+a_1f+\frac{1}{2}a_2f^2\right)^{1/2},
-\]
+$$
 
 and
 
-\[
+$$
 \gamma(V)=
 \frac{(1+2f)(a_1+a_2f)}
 {6\left(1+a_1f+\frac{1}{2}a_2f^2\right)}.
-\]
+$$
 
 The thermal pressure is calculated from the Debye thermal energy relative
 to the reference temperature:
 
-\[
-P_{\mathrm{th}}(V,T)
-=
+$$
+P_{\mathrm{th}}(V,T)=
 \frac{\gamma(V)}
 {V}
 \left[U(V,T)-U(V,T_0)\right].
-\]
+$$
 
 The fitted pressure is
 
-\[
+$$
 P(V,T)=P_{\mathrm{ref}}(V)+P_{\mathrm{th}}(V,T).
-\]
+$$
 
 Pressure curves are given equal total weight in the thermal fit so that
 a curve with more temperature points does not dominate the optimization.
@@ -152,10 +153,10 @@ The script writes:
   leave-one-pressure-out validation
 - `fit_parameters.csv` — final parameters and formal 1-sigma uncertainties
 - `residuals.csv` — pressure and volume residuals for every input point
-- `correlation_bm3.csv` — correlation matrix for \(V_0\), \(K_0\), and
-  \(K'_0\)
-- `correlation_thermal.csv` — correlation matrix for \(\gamma_0\),
-  \(q_0\), and \(\theta_{D0}\)
+- `correlation_bm3.csv` — correlation matrix for $V_0$, $K_0$, and
+  $K'_0$
+- `correlation_thermal.csv` — correlation matrix for $\gamma_0$,
+  $q_0$, and $\theta_{D0}$
 
 The reported uncertainties are formal least-squares uncertainties. They
 do not include uncertainty in the underlying electronic-structure or
